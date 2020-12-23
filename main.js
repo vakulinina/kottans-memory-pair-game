@@ -21,7 +21,7 @@ const cards = cardIds.flatMap(id => [createCard(id), createCard(id)]);
 function createCard(id) {
   let newCard = document.createElement('li');
   newCard.classList.add('card');
-  newCard.setAttribute('data-id', id);
+  newCard.id = id;
   newCard.innerHTML = `
     <div class="card-front">
       <img src="img/icon-cat.svg" alt="">
@@ -46,7 +46,7 @@ function flipCard(card) {
 }
 
 function checkPair() {
-  if (firstFlip.dataset.id !== secondFlip.dataset.id) {
+  if (firstFlip.id !== secondFlip.id) {
     setTimeout(function () {
       firstFlip.classList.remove('flip');
       secondFlip.classList.remove('flip');
