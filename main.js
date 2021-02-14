@@ -42,23 +42,19 @@ function renderCards() {
 function flipCard(card) {
   card.classList.add('flip');
   !firstFlip ? firstFlip = card : secondFlip = card;
-  if (firstFlip && secondFlip) checkPair();
+  if (firstFlip && secondFlip) setTimeout(checkPair, 600);
 }
 
 function checkPair() {
   if (firstFlip.id !== secondFlip.id) {
-    setTimeout(function () {
-      firstFlip.classList.remove('flip');
-      secondFlip.classList.remove('flip');
-      firstFlip = null;
-      secondFlip = null;
-    }, 600)
+    firstFlip.classList.remove('flip');
+    secondFlip.classList.remove('flip');
   } else {
-    firstFlip = null;
-    secondFlip = null;
     pairsOpen++;
     checkWin();
   }
+  firstFlip = null;
+  secondFlip = null;
 }
 
 function checkWin() {
